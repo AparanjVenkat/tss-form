@@ -1,0 +1,38 @@
+<form [formGroup]="employeeForm" (ngSubmit)="saveEmployee(employeeForm.value)" novalidate>
+  <div class="panel-body">
+  <div class="form-group">
+    <label class="form-group">Name:</label>
+    <input class="form-control" type="text" formControlName="name"  >
+    <small  *ngIf="isSubmit && employeeForm.get('name').errors">Name is required</small>
+  </div>
+  <div>
+    <label class="form-group">Department:</label>
+    <select class="form-control" id="department" formControlName="department">
+      <option value=''>select</option>
+      <option value=".net">.Net</option>
+      <option value="java">JAVA</option>
+      <option value=".php">PHP</option>
+      <option value="sms">SMS</option>
+    </select>
+    <small  *ngIf="isSubmit && employeeForm.get('department').errors">Name is required</small>
+  </div>
+  <div>
+    <label class="form-group">Salary:</label>
+    <input class="form-control" type="text" formControlName="salary"  >
+    <small  *ngIf="isSubmit && employeeForm.get('salary').errors">Salary is required</small>
+  </div>
+  <div>
+      <label class="form-group">Email:</label>
+    <input class="form-control" type="text" formControlName="email" >
+    <small  *ngIf="isSubmit && employeeForm.get('salary').errors">Salary is required</small>
+    <small  *ngIf="isSubmit && employeeForm.get('email').errors">Email is required</small>
+  </div>
+  <br/>
+  <button class="btn btn-primary" type="submit">Submit</button>
+  <button class="btn btn-primary" type="button" (click)=cancel()>Cancel</button>
+  <div>
+    <small class="form-group" *ngIf="isNewRecord">Inserted New Record</small>
+    <small *ngIf="isUpdateRecord">Updated Record</small>
+  </div>
+</div>
+</form>
